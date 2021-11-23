@@ -1,0 +1,14 @@
+#cityButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 50px;
+}
+
+#cardContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
