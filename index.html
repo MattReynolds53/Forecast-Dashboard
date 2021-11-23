@@ -13,66 +13,38 @@
         <div class="container-fluid">
           <a class="navbar-brand">Weather Forecast Dashboard</a>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Enter City Name" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit" id="submitBtn">Search</button>
+            <input class="form-control me-2" type="search" placeholder="Enter City Name" aria-label="Search" id="cityName">
+            <button class="btn btn-outline-success" type="submit " id="submitBtn">Search</button>
           </form>
         </div>
     </nav>
 
   <div id="cityButtons">
-    <div>
+    <!-- <div>
       <button type="button" class="list-group-item list-group-item-action" id="atlanta">Atlanta</button>
-    </div>
-    <div>
-      <button type="button" class="list-group-item list-group-item-action" id="dallas">Dallas</button>
-    </div>
-    <div>
-      <button type="button" class="list-group-item list-group-item-action" id="fortWorth">Fort Worth</button>
-    </div>
-    <div>
-      <button type="button" class="list-group-item list-group-item-action" id="orlando">Orlando</button>
-    </div>
-    <div>
-      <button type="button" class="list-group-item list-group-item-action" id="minneapolis">Minneapolis</button>
+    </div> -->
+  </div>
+
+  <div class="card col-6" id="presentDay">
+    <div class="card-body">
+    <h1 class="city"></h1>
+    <p class="temp"></p>
+    <p class="wind"></p>
+    <p class="humidity"></p>
+    <p class="uv"></p>
     </div>
   </div>
 
     <div id="cardContainer">
-      <div class="card border-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
+      <!-- <div id='card-content' class="card border-primary mb-3" style="max-width: 18rem;"> -->
+        <!-- <div class="card-header">Day 1</div>
         <div class="card-body">
-          <h5 class="card-title">Primary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card border-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          <h5 class="card-title">Secondary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      </div>
-        <div class="card border-success mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          <h5 class="card-title">Success card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card border-danger mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          <h5 class="card-title">Danger card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card border-warning mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          <h5 class="card-title">Warning card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
+          <h5 class="card-title">Forecast</h5>
+          <p class="card-text">Temp: </p>
+          <p class="card-text">Wind: </p>
+          <p class="card-text">Humidity: </p>
+        </div> -->
+      <!-- </div> -->
     </div>
 
 
