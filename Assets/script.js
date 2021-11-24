@@ -35,6 +35,7 @@ getHistory()
 
 function getHistory() {
     var storage = JSON.parse(localStorage.getItem('weatherHistory'))
+    // storage.clear();
     if (storage === null) {
         let nullHistory = document.createElement('h5')
         nullHistory.textContent = 'No History'
@@ -68,7 +69,21 @@ function getWeather(city) {
             currentWind.textContent = 'Wind: ' + weatherData.wind.speed + 'MPH';
             let currentHumidity = document.querySelector('.humidity');
             currentHumidity.textContent = 'Humidity: ' + weatherData.main.humidity + '%';
-            // add other variables here
+            // add UVI here
+            let lat = weatherData.coord.lat;
+            let lon = weatherData.coord.lon;
+
+            let requestUVUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=06bbfcf01249f664cd5e67e8615a3f5f`
+
+                fetch(requestUVUrl)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function(uvData) {
+                    console.log(uvData);
+                    let currentUVI = document.querySelector('.uvi');
+                    currentUVI.textContent = 'UV Index: ' + uvData.current.uvi;
+                })
         })
 }
 
@@ -116,6 +131,4 @@ function getFiveDayWeather(city) {
     })
 }
 
-// function getUVI {
-//     fetch()
-// }
+// storage.clear();
