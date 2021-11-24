@@ -50,6 +50,12 @@ function getHistory() {
             cityButtons.append(historyBtn)
 
             // add event listener to the history button and call the getweather function and the get5day fucntion passing in the the event.target.id
+
+            // historyBtn.addEventListener('click', getWeather(city), getFiveDayWeather(city));
+            // historyBtn.addEventListener('click', function(){
+            //     getWeather();
+            //     getFiveDayWeather();
+            // })
         }
     }
 }
@@ -83,6 +89,17 @@ function getWeather(city) {
                     console.log(uvData);
                     let currentUVI = document.querySelector('.uvi');
                     currentUVI.textContent = 'UV Index: ' + uvData.current.uvi;
+                    
+                    let uviValue = document.getElementById('uv');
+                    console.log(uviValue);
+                    if (uviValue < 3) {
+                        document.getElementById('uv').style.backgroundColor = 'green';
+                    } else if (uviValue > 6) {
+                        document.getElementById('uv').style.backgroundColor = 'red';
+                    } else {
+                        document.getElementById('uv').style.backgroundColor = 'yellow';
+                    }
+
                 })
         })
 }
