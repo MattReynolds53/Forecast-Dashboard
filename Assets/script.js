@@ -5,9 +5,6 @@ let cityButtons = document.getElementById('cityButtons')
 let date = moment();
 $('#currentDate').text(date.format('dddd, MMMM Do YYYY'));
 
-// this needs to come from your input!
-// Should this be inside or outside the function?
-// let cityName = $("input")
 let fiveDayWeatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?appid=06bbfcf01249f664cd5e67e8615a3f5f&q='
 let weatherUrl ='https://api.openweathermap.org/data/2.5/weather?appid=06bbfcf01249f664cd5e67e8615a3f5f&q='
 
@@ -35,7 +32,7 @@ getHistory()
 
 function getHistory() {
     var storage = JSON.parse(localStorage.getItem('weatherHistory'))
-    // storage.clear();
+    
     if (storage === null) {
         let nullHistory = document.createElement('h5')
         nullHistory.textContent = 'No History'
@@ -49,13 +46,6 @@ function getHistory() {
             historyBtn.setAttribute('id', storage[i])
             cityButtons.append(historyBtn)
 
-            // add event listener to the history button and call the getweather function and the get5day fucntion passing in the the event.target.id
-
-            // historyBtn.addEventListener('click', getWeather(city), getFiveDayWeather(city));
-            // historyBtn.addEventListener('click', function(){
-            //     getWeather();
-            //     getFiveDayWeather();
-            // })
         }
     }
 }
@@ -75,7 +65,7 @@ function getWeather(city) {
             currentWind.textContent = 'Wind: ' + weatherData.wind.speed + 'MPH';
             let currentHumidity = document.querySelector('.humidity');
             currentHumidity.textContent = 'Humidity: ' + weatherData.main.humidity + '%';
-            // add UVI here
+            
             let lat = weatherData.coord.lat;
             let lon = weatherData.coord.lon;
 
@@ -94,7 +84,7 @@ function getWeather(city) {
                     console.log(uviValue);
                     if (uviValue < 3) {
                         document.getElementById('uv').style.backgroundColor = 'green';
-                    } else if (uviValue > 6) {
+                    } else if (uviValue > 7) {
                         document.getElementById('uv').style.backgroundColor = 'red';
                     } else {
                         document.getElementById('uv').style.backgroundColor = 'yellow';
@@ -143,9 +133,9 @@ function getFiveDayWeather(city) {
             fiveDayHumidity.textContent = "Humidity: " + fiveDayData.list[i].main.humidity + "%"
             cardBody.append(fiveDayHumidity)
 
-            // finish wind, humidity, etc here - follow above example
+            
         }
     })
 }
 
-// storage.clear();
+
