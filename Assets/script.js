@@ -2,6 +2,8 @@
 let submitBtn = document.querySelector("#submitBtn")
 let cardContainer = document.querySelector('#cardContainer')
 let cityButtons = document.getElementById('cityButtons')
+let date = moment();
+$('#currentDate').text(date.format('dddd, MMMM Do YYYY'));
 
 // this needs to come from your input!
 // Should this be inside or outside the function?
@@ -58,10 +60,14 @@ function getWeather(city) {
         })
         .then(function (weatherData) {
             console.log('current', weatherData);
-            let currentCity = document.querySelector('.city')
-            currentCity.textContent = weatherData.name
-            let currentTemp = document.querySelector('.temp')
-            currentTemp.textContent = 'Temp: ' + weatherData.main.temp
+            let currentCity = document.querySelector('.city');
+            currentCity.textContent = weatherData.name;
+            let currentTemp = document.querySelector('.temp');
+            currentTemp.textContent = 'Temp: ' + weatherData.main.temp + 'F';
+            let currentWind = document.querySelector('.wind');
+            currentWind.textContent = 'Wind: ' + weatherData.wind.speed + 'MPH';
+            let currentHumidity = document.querySelector('.humidity');
+            currentHumidity.textContent = 'Humidity: ' + weatherData.main.humidity + '%';
             // add other variables here
         })
 }
@@ -90,16 +96,26 @@ function getFiveDayWeather(city) {
             card.append(cardBody)
 
             let title = document.createElement('h5')
-            title.textContent = 'Forecast'
+            title.textContent = 'Day ' + i
             cardBody.prepend(title)
 
             let fiveDayTemp = document.createElement('p')
-            fiveDayTemp.textContent = fiveDayData.list[i].main.temp
+            fiveDayTemp.textContent = "Temp: " + fiveDayData.list[i].main.temp + "F"
             cardBody.append(fiveDayTemp)
+
+            let fiveDayWind = document.createElement('p')
+            fiveDayWind.textContent = "Wind: " + fiveDayData.list[i].wind.speed + "MPH"
+            cardBody.append(fiveDayWind)
+
+            let fiveDayHumidity = document.createElement('p')
+            fiveDayHumidity.textContent = "Humidity: " + fiveDayData.list[i].main.humidity + "%"
+            cardBody.append(fiveDayHumidity)
 
             // finish wind, humidity, etc here - follow above example
         }
     })
 }
 
-    
+// function getUVI {
+//     fetch()
+// }

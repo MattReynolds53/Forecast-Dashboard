@@ -9,11 +9,17 @@
 
 #presentDay {
     padding: 20px;
+    display: flex;
+    align-items: center;
 }
 
 #cardContainer {
     display: flex;
     justify-content: space-evenly;
     padding-top: 50px;
+}
+
+#cityButtons {
+    display: flex
 }
 
