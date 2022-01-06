@@ -1,25 +1,24 @@
 #cityButtons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 50px;
 }
 
 #presentDay {
-    padding: 20px;
-    display: flex;
-    align-items: center;
+  padding: 20px;
+  display: flex;
+  align-items: center;
 }
 
 #cardContainer {
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 50px;
 }
 
 #cityButtons {
-    display: flex
+  display: flex;
 }
-

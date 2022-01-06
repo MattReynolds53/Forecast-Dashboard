@@ -50,10 +50,10 @@ function getHistory() {
       historyBtn.setAttribute("id", storage[i]);
       cityButtons.append(historyBtn);
 
-      historyBtn.addEventListener('click', function(e) {
-          getWeather(e.target.textContent)
-          getFiveDayWeather(e.target.textContent)
-      })
+      historyBtn.addEventListener("click", function (e) {
+        getWeather(e.target.textContent);
+        getFiveDayWeather(e.target.textContent);
+      });
     }
   }
 }
@@ -85,10 +85,10 @@ function getWeather(city) {
           return response.json();
         })
         .then(function (uvData) {
-          console.log('uv', uvData);
+          console.log("uv", uvData);
           let currentUVI = document.querySelector(".uvi");
           currentUVI.textContent = "UV Index: " + uvData.current.uvi;
-          currentUVI.setAttribute('id', uvData.current.uvi)
+          currentUVI.setAttribute("id", uvData.current.uvi);
 
           console.log(currentUVI.id);
           if (currentUVI.id < 3) {
