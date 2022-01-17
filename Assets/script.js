@@ -15,7 +15,6 @@ function getCity(event) {
   event.preventDefault();
   let cityName = document.getElementById("cityName").value;
   getWeather(cityName);
-  getFiveDayWeather(cityName);
   saveHistory(cityName);
 }
 
@@ -40,7 +39,7 @@ function getHistory() {
     cityButtons.append(nullHistory);
   } else {
     cityButtons.textContent = "";
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < storage.length; i++) {
       var historyBtn = document.createElement("button");
       historyBtn.setAttribute(
         "class",
@@ -52,7 +51,7 @@ function getHistory() {
 
       historyBtn.addEventListener("click", function (e) {
         getWeather(e.target.textContent);
-        getFiveDayWeather(e.target.textContent);
+        
       });
     }
   }
@@ -80,6 +79,8 @@ function getWeather(city) {
 
       let requestUVUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=06bbfcf01249f664cd5e67e8615a3f5f`;
 
+      getFiveDayWeather(lat, lon)
+
       fetch(requestUVUrl)
         .then(function (response) {
           return response.json();
@@ -102,8 +103,9 @@ function getWeather(city) {
     });
 }
 
-function getFiveDayWeather(city) {
-  fetch(fiveDayWeatherUrl + city + "&units=imperial")
+function getFiveDayWeather(lat, lon) {
+  // fetch(fiveDayWeatherUrl + city + "&units=imperial")
+  fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=06bbfcf01249f664cd5e67e8615a3f5f&units=imperial`)
     .then(function (res) {
       return res.json();
     })
@@ -111,7 +113,7 @@ function getFiveDayWeather(city) {
       console.log("5day", fiveDayData);
       cardContainer.textContent = "";
       for (let i = 1; i < 6; i++) {
-        console.log(fiveDayData.list[i]);
+        console.log(fiveDayData.daily[i]);
 
         let card = document.createElement("div");
         card.setAttribute("class", "card border-primary mb-3");
@@ -132,17 +134,17 @@ function getFiveDayWeather(city) {
 
         let fiveDayTemp = document.createElement("p");
         fiveDayTemp.textContent =
-          "Temp: " + fiveDayData.list[i].main.temp + "F";
+          "Temp: " + fiveDayData.daily[i].temp.day + " F";
         cardBody.append(fiveDayTemp);
 
         let fiveDayWind = document.createElement("p");
         fiveDayWind.textContent =
-          "Wind: " + fiveDayData.list[i].wind.speed + "MPH";
+          "Wind: " + fiveDayData.daily[i].wind_speed + "MPH";
         cardBody.append(fiveDayWind);
 
         let fiveDayHumidity = document.createElement("p");
         fiveDayHumidity.textContent =
-          "Humidity: " + fiveDayData.list[i].main.humidity + "%";
+          "Humidity: " + fiveDayData.daily[i].humidity + "%";
         cardBody.append(fiveDayHumidity);
       }
     });
